@@ -29,14 +29,14 @@
         overflow: hidden;
       }
 
-      /* .wrapper.show-message::after {
+      .wrapper.show-message::after {
         position: absolute;
         content: 'drag the donut and feed the bear';
-        top: 120px;
+        top: 80px;
         font-style: italic;
         color: #fff;
         font-size: 1.2em;
-      } */
+      }
 
       .object {
         position: absolute;
@@ -359,53 +359,12 @@
       a:hover { 
         text-decoration: underline; 
       }
-      .blessing-message {
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Arial', sans-serif;
-  font-size: 1.4em;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-  background-size: 200% 200%;
-  animation: rainbow 3s ease infinite;
-  padding: 10px 20px;
-  border-radius: 25px;
-  border: 3px solid #fff;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-
-@keyframes rainbow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.blessing-message.hidden {
-  opacity: 0;
-  transform: translateX(-50%) translateY(-20px);
-  transition: all 0.5s ease;
-}
     </style>
   </head>
   <body>
     <body>
       <div class="wrapper show-message">
-  <div class="blessing-message">
-    Thoa đói quá, hãy cho Thoa ăn đi. Thoa chúc 2k7 đỗ nv3 cùng Thoa 🐻✨
-  </div>
-</div>
+      </div>
     
       <script>  
         const isNum = x => typeof x === 'number'
@@ -694,7 +653,6 @@
                 if (this.mouth.distanceBetween(this.food) < 50) {
                   this.el.classList.add('eating')
                   wrapper.classList.remove('show-message')
-                  document.querySelector('.blessing-message').classList.add('hidden')
                   this.food.eat()
                 } else {
                   this.el.classList.remove('eating')
@@ -714,15 +672,12 @@
             this.el.className = 'bear object grow'
 
             setTimeout(()=> {
-  this.el.classList.add('cheek-shrink')
-  setTimeout(()=> {
-    this.el.classList.remove ('cheek-shrink')
-    this.createFood()
-    // Reset messages
-    wrapper.classList.add('show-message')
-    document.querySelector('.blessing-message').classList.remove('hidden')
-  }, 1000)
-}, 1000)
+              this.el.classList.add('cheek-shrink')
+              setTimeout(()=> {
+                this.el.classList.remove ('cheek-shrink')
+                this.createFood()
+              }, 1000)
+            }, 1000)
 
             setTimeout(()=> {
               this.size = { ...this.maxSize }
